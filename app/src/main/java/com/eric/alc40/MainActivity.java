@@ -14,15 +14,34 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        findViewById(R.id.about_btn).setOnClickListener(new handleButton());
-    }
+        Button aboutButton = findViewById(R.id.about_btn);
+        Button myprofileButton = findViewById(R.id.myprofile_btn);
+        TextView introText = findViewById(R.id.intro_txt);
 
-    public class handleButton implements  View.OnClickListener{
-        public void onClick (View view){
-            Intent aboutActivity = new Intent(MainActivity.this, AboutActivity.class);
-            startActivity(aboutActivity);
-        }
-    }
 
+        // Set onclick listenner
+
+        aboutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent aboutActivityIntent = new Intent(MainActivity.this, AboutActivity.class);
+                //aboutActivityIntent.putExtra(AboutActivity.EXTRA_URL, "https://andela.com/alc/");
+                aboutActivityIntent.getData();
+                startActivity(aboutActivityIntent);
+            }
+        });
+
+        myprofileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myprofileActivityIntent = new Intent(MainActivity.this, ProfileActivity.class);
+                startActivity(myprofileActivityIntent);
+            }
+        });
+
+
+    }
 
 }
+
+
